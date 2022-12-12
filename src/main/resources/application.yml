@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/todolist
+    username: todolist
+    password: todolist
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9990/auth/realms/MOBILE_PROJECT/protocol/openid-connect/certs
+keycloak:
+  auth-server-url: http://localhost:9990/auth
+  realm: MOBILE_PROJECT
+  resource: todolist
+  credentials:
+    secret: 0494d321-73fc-4a6a-ada6-8ef1a62c8e8b
